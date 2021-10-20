@@ -1,0 +1,11 @@
+resource "aws_s3_bucket" "onebucket" {
+   bucket = "veda-25171"
+   acl = "private"
+   versioning {
+      enabled = false
+   }
+   tags = {
+     Name = "bucket19-10-21"
+     Environment = "Test"
+   }
+}
