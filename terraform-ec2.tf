@@ -1,17 +1,17 @@
 provider "aws" { 
-	region = "us-west-1"
+	region = "ap-south-1"
 }
 
-#resource "aws_volume_attachment" "venkatinstancevolume"  {
+#resource "aws_volume_attachment" "Newvolume"  {
 #	device_name = "/dev/xvda"
 	#volume_id = "${data.aws_ebs_volume.ebs_volume.id}"
-#	instance_id = "${aws_instance.venkatinstance.id}"
+#	instance_id = "${aws_instance.Newinstance.id}"
 #}
 
-resource "aws_instance" "venkatinstance" {
+resource "aws_instance" "Newinstance" {
 	ami = "ami-03ab7423a204da002"
 	instance_type = "t2.micro"
-	key_name = "DockerContainer"
+	key_name = "HTC"
 	vpc_security_group_ids = ["sg-0126be558371393a3"]
 	subnet_id = "subnet-87f159dd"
 	tags = {
@@ -31,15 +31,15 @@ resource "aws_instance" "venkatinstance" {
 
 	associate_public_ip_address = "true"
 	#provisioner "file" {
-	#	source = "venkat.sh"
-	#	destination = "/tmp/venkat.sh"
+	#	source = "shanti.sh"
+	#	destination = "/tmp/shanti.sh"
 	#}
 	
 	connection {
 		type = "ssh"
-		host = "${aws_instance.venkatinstance.private_ip}"
+		host = "${aws_instance.Newinstance.private_ip}"
 		user = "ec2-user"
-		private_key = file("/home/ubuntu/DockerContainer")
+		private_key = file("/home/ubuntu/HTC")
 	}
 
 	provisioner "remote-exec" {
